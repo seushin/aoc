@@ -13,26 +13,19 @@ const digits = [
   "nine",
 ];
 
-function isDigit(char: string): boolean {
-  return (
-    char.charCodeAt(0) >= "0".charCodeAt(0) &&
-    char.charCodeAt(0) <= "9".charCodeAt(0)
-  );
-}
-
 function firstDigit(str: string): number {
-  return parseInt(str.split("").find(isDigit) ?? "");
+  return parseInt(str.split("").find(util.isDigit) ?? "");
 }
 
 function lastDigit(str: string): number {
-  return parseInt(str.split("").reverse().find(isDigit) ?? "");
+  return parseInt(str.split("").reverse().find(util.isDigit) ?? "");
 }
 
 function parseDigit(line: string): number[] {
   const result: number[] = [];
 
   for (let i = 0; i < line.length; i++) {
-    if (isDigit(line[i])) {
+    if (util.isDigit(line[i])) {
       result.push(parseInt(line[i]));
     } else {
       digits.forEach((digit, n) => {
